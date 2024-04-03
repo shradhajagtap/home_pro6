@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Title</title>
+
+{% endblock %}
+{% block content %}
+
+        <h2 class="text-secondary text-center"> Information about CJC Students in Class </h2>
+        <table class="table table-striped m-auto ">
+            <thead>
+                <tr>
+                    <th> ID </th>
+                    <th> Student First Name </th>
+                    <th> Student Last Name </th>
+                    <th> Student Qualification </th>
+                    <th> Course </th>
+                    <th> Student Address </th>
+                    <th colspan="2" class="text-center"> Action </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for cjc in obj %}
+                    <tr>
+                        <td>{{ cjc.id }} </td>
+                        <td>{{ cjc.stu_first_name  }}</td>
+                        <td>{{ cjc.stu_last_name  }}</td>
+                        <td>{{ cjc.stu_qualification  }}</td>
+                        <td>{{ cjc.course  }}</td>
+                        <td>{{ cjc.stu_address  }}</td>
+                        <td>
+                            <a href="{% url 'update_url'  cjc.id %}">
+                                <button class="btn btn-outline-primary col-12"><i class="bi bi-vector-pen"></i> &nbsp Update </button>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'delete_url' cjc.id %}">
+                                <button class="btn btn-outline-danger col-12"><i class="bi bi-trash"></i> &nbsp Delete </button>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+{% endblock %}
